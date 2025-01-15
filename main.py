@@ -50,7 +50,18 @@ class University:
             self.application_review(event)
     
     def application_review(self.event):
-        pass
+
+        print(f"University {self.name} processing event: {event}")
+        if isinstance(event, ApplicationSentEvent):
+            self.application_review(event)
+
+
+git add main.py 
+git commit -m 'Add university handle event'
+git push origin main
+
+
+
 
 
 
