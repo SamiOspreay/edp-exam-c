@@ -55,10 +55,25 @@ class University:
         if isinstance(event, ApplicationSentEvent):
             self.application_review(event)
 
+    def application_review(self, event):
+        
+        print(f"Reviewing application: {event.payload}")
+       
+        if event.payload:
+            acceptance_event = ApplicationAcceptedEvent(f"Accepted {event.payload}")
+            self.communication_queue.append(acceptance_event)
+        else:
+            rejection_event = ApplicationRejectedEvent(f"Rejected {event.payload}")
+            self.communication_queue.append(rejection_event)
 
-git add main.py 
-git commit -m 'Add university handle event'
-git push origin main
+    def process_queue(self):
+        while self.communication_queue:
+            event = self.communication_queue.popleft()
+            print(f"University {self.name} processed: {event}")
+
+
+
+
 
 
 
