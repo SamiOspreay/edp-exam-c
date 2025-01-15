@@ -49,7 +49,8 @@ class University:
         if isinstance(event, ApplicationSentEvent):
             self.application_review(event)
     
-    def
+    def application_review(self.event):
+        pass
 
 
 
